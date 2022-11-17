@@ -15,7 +15,7 @@ const BackgroundCircles = () => {
       transition={{
         duration: 2.5,
       }}
-      className="relative flex justify-center items-center"
+      className="relative flex-center"
     >
       <div className="absolute border border-[#4A4848] w-[200px] h-[200px] rounded-full mt-52 animate-ping" />
       <div className="absolute border border-[#4A4848] w-[300px] h-[300px] rounded-full mt-52" />
