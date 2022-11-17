@@ -1,6 +1,13 @@
 import Head from "next/head";
 
-import { Header, Hero, About, Experience, Skills } from "@/components";
+import {
+  Header,
+  Hero,
+  About,
+  Experience,
+  Skills,
+  Projects,
+} from "@/components";
 
 export default function Home() {
   return (
@@ -27,7 +34,9 @@ export default function Home() {
         <Skills />
       </section>
 
-      {/* Projects */}
+      <section id="projects" className="snap-start">
+        <Projects />
+      </section>
 
       {/* Contact Me */}
     </div>
