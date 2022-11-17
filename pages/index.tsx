@@ -1,6 +1,6 @@
 import Head from "next/head";
 
-import { About, Header, Hero } from "@/components";
+import { Header, Hero, About, Experience } from "@/components";
 
 export default function Home() {
   return (
@@ -19,7 +19,9 @@ export default function Home() {
         <About />
       </section>
 
-      {/* Experience */}
+      <section id="experience" className="snap-center">
+        <Experience />
+      </section>
 
       {/* Skills */}
 

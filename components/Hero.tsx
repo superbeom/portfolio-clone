@@ -8,7 +8,7 @@ import { BackgroundCircles } from "@/components";
 const Hero = () => {
   const [text, _] = useTypewriter({
     words: [
-      "Hi, The Name's Portfolio",
+      "Hi, The Name's Mia",
       "Guy-who-loves-Coffee.tsx",
       "<ButLovesToCodeMore />",
     ],
