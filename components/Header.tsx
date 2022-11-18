@@ -1,10 +1,12 @@
 import React, { ReactNode } from "react";
+import { useRouter } from "next/router";
 import { SocialIcon } from "react-social-icons";
 import { motion } from "framer-motion";
 
 interface Motion {
   position: number;
   className: string;
+  onClick?: () => void;
   children: ReactNode;
 }
 
@@ -26,7 +28,7 @@ const socialIconStyle = {
   bgColor: "transparent",
 };
 
-const MotionDiv = ({ position, className, children }: Motion) => (
+const MotionDiv = ({ position, className, onClick, children }: Motion) => (
   <motion.div
     initial={{
       ...initial,
@@ -35,12 +37,15 @@ const MotionDiv = ({ position, className, children }: Motion) => (
     animate={animate}
     transition={transition}
     className={className}
+    onClick={onClick}
   >
     {children}
   </motion.div>
 );
 
 const Header = () => {
+  const router = useRouter();
+
   return (
     <header className="sticky top-0 flex justify-between items-start xl:items-center max-w-7xl p-5 md:mx-auto z-20">
       <MotionDiv position={-posistion} className="flex items-center">
@@ -53,6 +58,7 @@ const Header = () => {
       <MotionDiv
         position={posistion}
         className="flex items-center text-gray-300 cursor-pointer"
+        onClick={() => router.push("#contact")}
       >
         <SocialIcon network="email" {...socialIconStyle} />
         <p className="uppercase hidden md:inline-flex text-sm font-semibold text-gray-400">

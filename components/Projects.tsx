@@ -13,7 +13,10 @@ const Projects = () => {
     >
       <h3 className="title">Projects</h3>
 
-      <div className="relative w-full flex overflow-x-scroll overflow-y-hidden snap-x snap-mandatory z-20">
+      <div
+        className="relative w-full flex overflow-x-scroll overflow-y-hidden snap-x snap-mandatory z-20
+        custom-scrollbar"
+      >
         {projects.map((project, index) => (
           <div
             key={project}

@@ -9,7 +9,7 @@ const Experience = () => {
 
       <div
         className="w-full flex space-x-5 overflow-x-scroll p-10
-      snap-x snap-mandatory mt-32"
+      snap-x snap-mandatory mt-32 custom-scrollbar"
       >
         <ExperienceCard />
         <ExperienceCard />
