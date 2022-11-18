@@ -7,12 +7,17 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "clear": "rm -rf .next"
+    "clear": "rm -rf .next",
+    "sanity": "cd sanity && sanity start",
+    "sanity-deploy": "cd sanity && sanity deploy"
   },
   "dependencies": {
     "@heroicons/react": "^2.0.13",
+    "@portabletext/react": "^2.0.0",
+    "@sanity/image-url": "^1.0.1",
     "framer-motion": "^7.6.7",
     "next": "13.0.3",
+    "next-sanity": "^2.0.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.39.4",
