@@ -3,11 +3,17 @@ import { useRouter } from "next/router";
 import { SocialIcon } from "react-social-icons";
 import { motion } from "framer-motion";
 
+import { Social } from "@/typings";
+
 interface Motion {
   position: number;
   className: string;
   onClick?: () => void;
   children: ReactNode;
+}
+
+interface Props {
+  socials: Social[];
 }
 
 const posistion = 500;
@@ -43,16 +49,20 @@ const MotionDiv = ({ position, className, onClick, children }: Motion) => (
   </motion.div>
 );
 
-const Header = () => {
+const Header = ({ socials }: Props) => {
   const router = useRouter();
 
   return (
     <header className="sticky top-0 flex justify-between items-start xl:items-center max-w-7xl p-5 md:mx-auto z-20">
       <MotionDiv position={-posistion} className="flex items-center">
-        <SocialIcon network="facebook" {...socialIconStyle} />
-        <SocialIcon network="youtube" {...socialIconStyle} />
-        <SocialIcon network="instagram" {...socialIconStyle} />
-        <SocialIcon network="twitter" {...socialIconStyle} />
+        {socials.map((social) => (
+          <SocialIcon
+            key={social._id}
+            network={social.title}
+            url={social.url}
+            {...socialIconStyle}
+          />
+        ))}
       </MotionDiv>
 
       <MotionDiv

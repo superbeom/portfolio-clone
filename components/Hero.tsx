@@ -3,12 +3,19 @@ import Link from "next/link";
 import Image from "next/image";
 import { Cursor, useTypewriter } from "react-simple-typewriter";
 
+import { PageInfo } from "@/typings";
+import { urlFor } from "@/sanity";
+
 import { BackgroundCircles } from "@/components";
 
-const Hero = () => {
+interface Props {
+  pageInfo: PageInfo;
+}
+
+const Hero = ({ pageInfo }: Props) => {
   const [text, _] = useTypewriter({
     words: [
-      "Hi, The Name's Mia",
+      `Hi, The Name's ${pageInfo.name}`,
       "Guy-who-loves-Coffee.tsx",
       "<ButLovesToCodeMore />",
     ],
@@ -22,7 +29,7 @@ const Hero = () => {
 
       <Image
         className="relative w-32 h-32 mx-auto rounded-full object-fill"
-        src="https://res.cloudinary.com/ds8wavxll/image/upload/v1668663157/samples/animals/kitten-playing.gif"
+        src={urlFor(pageInfo.heroImage).url()}
         alt="profile"
         width={128}
         height={128}
@@ -30,7 +37,7 @@ const Hero = () => {
 
       <div className="z-20">
         <h2 className="text-sm text-gray-500 uppercase pb-2 tracking-[15px]">
-          Software Engineer
+          {pageInfo.role}
         </h2>
 
         <h1 className="text-5xl lg:text-6xl font-semibold px-10">

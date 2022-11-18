@@ -1,6 +1,21 @@
+import { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
+
+import {
+  Experience as ExperienceType,
+  PageInfo,
+  Project,
+  Skill,
+  Social,
+} from "@/typings";
+
+import { fetchPageInfo } from "@/utils/fetchPageInfo";
+import { fetchSkills } from "@/utils/fetchSkills";
+import { fetchExperiences } from "@/utils/fetchExperiences";
+import { fetchProjects } from "@/utils/fetchProjects";
+import { fetchSocials } from "@/utils/fetchSocials";
 
 import {
   Header,
@@ -12,7 +27,21 @@ import {
   ContactMe,
 } from "@/components";
 
-export default function Home() {
+interface Props {
+  pageInfo: PageInfo;
+  skills: Skill[];
+  experiences: ExperienceType[];
+  projects: Project[];
+  socials: Social[];
+}
+
+const Home: NextPage<Props> = ({
+  pageInfo,
+  skills,
+  experiences,
+  projects,
+  socials,
+}) => {
   return (
     <div
       className="h-screen bg-[#363636] text-white custom-scrollbar
@@ -22,18 +51,18 @@ export default function Home() {
         <title>Portfolio</title>
       </Head>
 
-      <Header />
+      <Header socials={socials} />
 
       <section id="hero" className="snap-start">
-        <Hero />
+        <Hero pageInfo={pageInfo} />
       </section>
 
       <section id="about" className="snap-center">
-        <About />
+        <About pageInfo={pageInfo} />
       </section>
 
       <section id="experience" className="snap-center">
-        <Experience />
+        <Experience experiences={experiences} />
       </section>
 
       <section id="skills" className="snap-start">
@@ -63,4 +92,25 @@ export default function Home() {
       </Link>
     </div>
   );
-}
+};
+
+export default Home;
+
+export const getStaticProps: GetStaticProps = async () => {
+  const pageInfo = await fetchPageInfo();
+  const skills = await fetchSkills();
+  const experiences = await fetchExperiences();
+  const projects = await fetchProjects();
+  const socials = await fetchSocials();
+
+  return {
+    props: {
+      pageInfo,
+      skills,
+      experiences,
+      projects,
+      socials,
+    },
+    revalidate: 10,
+  };
+};
